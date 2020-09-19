@@ -1,0 +1,11 @@
+﻿https://www.cnblogs.com/TankXiao/p/4815134.html（Android Monkey 压力测试 介绍）
+
+https://blog.csdn.net/huangbiao86/article/details/8490743（Android命令Monkey压力测试，详解）
+
+https://www.cnblogs.com/TankXiao/archive/2012/02/06/2337728.html（Fiddler 教程）
+
+https://perfdog.qq.com/（PerfDog--WeTest客户端性能测试工具）
+
+https://www.nowcoder.com/（牛客网）
+
+

@@ -1,0 +1,11 @@
+1. 查找端口命令（例如端口：80）
+netstat -ano|findstr “80”
+
+C:\Users\Administrator\Desktop>netstat -ano|findstr "80"
+  TCP    0.0.0.0:80             0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:3306           0.0.0.0:0              LISTENING       4380
+  TCP    0.0.0.0:8080           0.0.0.0:0              LISTENING       7916
+  TCP    0.0.0.0:58099          0.0.0.0:0              LISTENING       4712
+（最后一列为PID）
+
+2.Ctrl+Shift+Esc打开任务管理器-详细信息，即可查看pid对应的进程
