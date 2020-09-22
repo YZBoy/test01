@@ -16,21 +16,46 @@ count : 模式匹配后替换的最大次数，默认 0 表示替换所有的匹
 使用re.compile()函数进行转换后，re.search(pattern, string)的调用方式就转换为 pattern.search(string)的调用方式。
 """
 
-
 import re
 
 s = "我的qq账号是：qq123456，我的密码是：123456。我的微信账号是：weixin123，我的微信密码是：123abc。\
 我的网易邮箱账号是：123456zy@163.com，我的网易邮箱密码是：abc123abc。"
 
-# pattern_user = '账号是：([\da-z@\.]+)'
-# pattern_pwd = '密码是：([\da-z@\.]+)'
-# user = re.findall(pattern_user, s)
-# pwd = re.findall(pattern_pwd, s)
+# re.findall()使用
+pattern_user = '账号是：([\da-z@\.]+)'
+pattern_pwd = '密码是：([\da-z@\.]+)'
+user = re.findall(pattern_user, s)
+pwd = re.findall(pattern_pwd, s)
+print(user)
+print(pwd)
 
-# 使用re.compile生成正则表达式（ Pattern ）对象
-pattern_user = re.compile('账号是：([\da-z@\.]+)')  # \d：匹配一个数字 ():匹配括号内的表达式  []:用来表示一组字符,单独列出  +：匹配1个或多个表达式
+# re.compile使用
+pattern_user = re.compile('账号是：([\da-z@\.]+)')  # \d：匹配一个数字  +：匹配1个或多个表达式 ():匹配括号内的表达式  []:用来表示一组字符,单独列出
 pattern_pwd = re.compile('密码是：([\da-z@\.]+)')
 user = pattern_user.findall(s)
 pwd = pattern_pwd.findall(s)
 print(user)
 print(pwd)
+
+# re.search()使用
+pattern_email = '[a-zA-Z@0-9]+\.com'
+result = re.search(pattern_email, s).group(0)  # 使用group(num) 或 groups() 匹配对象函数来获取匹配表达式
+print(result)
+
+# re.match()使用
+s = "123_456_789"
+pattern = '([0-9]*)_([0-9]*)_([0-9]*)'
+result = re.match(pattern, s).group()   # 123_456_789
+result1 = re.match(pattern, s).group(1)     # 123
+result2 = re.match(pattern, s).group(2)     # 456
+result3 = re.match(pattern, s).group(3)     # 789
+print(result, result1, result2, result3)
+
+# re.sub()使用
+s = "a1b2c_123#45 7.8__9!"
+pattern = '[_#\.! ]'
+result = re.sub(pattern, " ", s)
+print(result)
+
+
+
