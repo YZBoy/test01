@@ -1,0 +1,36 @@
+"""1. re.findall(pattern, string, flags=0)
+在字符串中找到正则表达式所匹配的所有子串，并返回一个列表，如果没有找到匹配的，则返回空列表。
+
+2.re.match(pattern, string, flags=0)
+尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。
+
+3.re.search(pattern, string, flags=0)
+扫描整个字符串并返回第一个成功的匹配，匹配成功返回一个匹配的对象，否则返回None。
+
+4.re.sub(pattern, repl, string, count=0, flags=0)：re.sub用于替换字符串中的匹配项。
+repl : 替换的字符串，也可为一个函数。
+string : 要被查找替换的原始字符串。
+count : 模式匹配后替换的最大次数，默认 0 表示替换所有的匹配。
+
+5.re.compile(pattern[, flags])：用于编译正则表达式，生成一个正则表达式（ Pattern ）对象。
+使用re.compile()函数进行转换后，re.search(pattern, string)的调用方式就转换为 pattern.search(string)的调用方式。
+"""
+
+
+import re
+
+s = "我的qq账号是：qq123456，我的密码是：123456。我的微信账号是：weixin123，我的微信密码是：123abc。\
+我的网易邮箱账号是：123456zy@163.com，我的网易邮箱密码是：abc123abc。"
+
+# pattern_user = '账号是：([\da-z@\.]+)'
+# pattern_pwd = '密码是：([\da-z@\.]+)'
+# user = re.findall(pattern_user, s)
+# pwd = re.findall(pattern_pwd, s)
+
+# 使用re.compile生成正则表达式（ Pattern ）对象
+pattern_user = re.compile('账号是：([\da-z@\.]+)')  # \d：匹配一个数字 ():匹配括号内的表达式  []:用来表示一组字符,单独列出  +：匹配1个或多个表达式
+pattern_pwd = re.compile('密码是：([\da-z@\.]+)')
+user = pattern_user.findall(s)
+pwd = pattern_pwd.findall(s)
+print(user)
+print(pwd)
