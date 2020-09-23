@@ -9,10 +9,10 @@ https://tieba.baidu.com/p/6972849748?red_tag=2913427813
 import re
 import csv
 
-path = r"C:\Users\Administrator\Desktop\source.txt"
-with open(path,"r",encoding="utf-8") as f:
+file = r"source.txt"
+with open(file,"r",encoding="utf-8") as f:
     content = f.read()
-pattern_user = 'username="(.*?)"'
+pattern_user = 'username="(.*?)" class=""'
 pattern_content = '(\S*?)</div><br>'
 result_user = re.findall(pattern_user, content, re.S)
 result_content = re.findall(pattern_content, content, re.S)
@@ -22,9 +22,9 @@ print(result_content,len(result_content))
 # 结果内容：包含字典的列表
 # result = []
 
-with open("tieba.txt","w",encoding="utf-8") as f:
-    writer = csv.DictWriter(f,fieldnames=['姓名','内容'])
-    writer.writeheader()
-    writer.writer(result)
+# with open("tieba.txt","w",encoding="utf-8") as f:
+    # writer = csv.DictWriter(f,fieldnames=['姓名','内容'])
+    # writer.writeheader()
+    # writer.writer(result)
     
     
