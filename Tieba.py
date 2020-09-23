@@ -9,22 +9,34 @@ https://tieba.baidu.com/p/6972849748?red_tag=2913427813
 import re
 import csv
 
-file = r"source.txt"
-with open(file,"r",encoding="utf-8") as f:
-    content = f.read()
-pattern_user = 'username="(.*?)" class=""'
-pattern_content = '(\S*?)</div><br>'
-result_user = re.findall(pattern_user, content, re.S)
-result_content = re.findall(pattern_content, content, re.S)
-print(result_user,len(result_user))
-print(result_content,len(result_content))
+# 将
+def list_to_dict(user,content,column):
+    count = min(len(user),len(content))
+    lst = []
+    for i in range(count):
+        d = {}
+        d[column[0]] = user[i]
+        d[column[1]] = content[i]
+        lst.append(d)
+    return lst
 
-# 结果内容：包含字典的列表
-# result = []
+def result(file,column):
+    file = r"source.txt"
+    with open(file, "r", encoding="utf-8") as f:
+        content = f.read()
+    pattern_user = 'username="(.*?)" class='
+    pattern_content = '(\S*?)</div><br>'
+    user = re.findall(pattern_user, content, re.S)
+    content = re.findall(pattern_content, content, re.S)
+    return list_to_dict(user,content,column)
 
-# with open("tieba.txt","w",encoding="utf-8") as f:
-    # writer = csv.DictWriter(f,fieldnames=['姓名','内容'])
-    # writer.writeheader()
-    # writer.writer(result)
-    
-    
+def tieba(file,column):
+    with open("tieba.csv","w",newline='',encoding="utf-8") as f:
+        writer = csv.DictWriter(f,fieldnames=column)
+        writer.writeheader()
+        writer.writerows(result(file,column))
+
+if __name__ == "__main__":
+    file = "source.txt"
+    column = ['name','content']
+    tieba(file,column)

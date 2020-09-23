@@ -8,7 +8,7 @@ d = {"name":"lee","content":"make money"}
 d1 = {"name":"lee","content":"make money","age":10}
 
 # csv文件的写入
-with open("tieba.csv","w",newline='',encoding="utf-8") as f: # 加入参数newline='' ：避免出现空行
+with open("test01.csv","w",newline='',encoding="utf-8") as f: # 加入参数newline='' ：避免出现空行
     # fieldnames定义列名
     writer = csv.DictWriter(f,fieldnames=['name','content','time'])
     # 写入列名
@@ -20,13 +20,13 @@ with open("tieba.csv","w",newline='',encoding="utf-8") as f: # 加入参数newli
     # writer.writerow(d1) #字典的key不在列名中时会报错
 
 # csv文件的读取
-with open("tieba.csv","r",encoding="utf-8") as f:
+with open("test01.csv","r",encoding="utf-8") as f:
     reader = csv.DictReader(f)
     for row in reader:
         print("name:{}".format(row["name"]),"content:{}".format(row["content"]),"time:{}".format(row["time"]))
 
 # 文本文件写入
-with open("tieba.txt","w",encoding="utf-8") as f:
+with open("test01.txt","w",encoding="utf-8") as f:
     f.write("123\n")
     # 写入一个string
     f.write("456")
@@ -35,7 +35,7 @@ with open("tieba.txt","w",encoding="utf-8") as f:
     f.writelines(["abc","def"])
 
 # 文本文件读取
-with open("tieba.txt","r",encoding="utf-8") as f:
+with open("test01.txt","r",encoding="utf-8") as f:
     print(f.read())
     print("--"*10)
     # 游标置于文件开头
@@ -61,10 +61,10 @@ data = {
     "sex":['male','female','male']
 }
 df = DataFrame(data)
-df.to_excel('new.xlsx')
+df.to_excel('test01.xlsx')
 
 # excel文件读取
-df = pd.read_excel(r'new.xlsx')
+df = pd.read_excel('test01.xlsx')
 print(df)
 for key in df:
     print("---" * 10)
