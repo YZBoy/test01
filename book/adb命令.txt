@@ -1,21 +1,3 @@
-note.idea.notepad.pro
-app.qr.scanner.master
-scannermaster.docmanager.Intelligentlens
-caller.colorscreen.musical.video
-superscanner.intelligent.lens.translation
-com.hi.translate
-com.zero.boost.master
---------------------------------------------------
-https://play.google.com/store/apps/details?id=com.hi.translate
-------------------------------------------------
-QR Scanner Master
-Scanner Master Pro
-Super Scanner
-
-
-----------not set买量
-adb shell am broadcast -a com.android.vending.INSTALL_REFERRER --es referrer "utm_source=\(not%20set\)\&utm_medium=\(not%20set\)"
-
 1.获取手机屏幕分辨率
 adb shell "dumpsys window displays |head -n 3"
 
@@ -60,10 +42,10 @@ adb shell pm list packages -3
 例：adb shell "pm list packages -3 |grep scanner"（匹配包名含有scanner的第三方应用）
 
 10.跑monkey的命令
-adb shell monkey -p com.zero.boost.master  --ignore-crashes --ignore-timeouts --ignore-security-exceptions --ignore-native-crashes --pct-touch 20
+adb shell monkey -p 包名  --ignore-crashes --ignore-timeouts --ignore-security-exceptions --ignore-native-crashes --pct-touch 20
 --pct-motion 20 --pct-majornav 20 --pct-appswitch 30 --pct-anyevent 5 -v -v -v -s 123456 --throttle 200 5000 >>monkey.txt
 
-adb shell monkey -p com.zero.boost.master  -v -v -v -s 123456 --throttle 100 2000 >>monkey.txt
+adb shell monkey -p 包名  -v -v -v -s 123456 --throttle 100 2000 >>monkey.txt
 
 NullPointerException
 
@@ -94,7 +76,6 @@ adb pull /data/anr
 16. adb reboot (重启手机)
 
 
-
 17.android adb 模拟点击、滑动、输入、按键
 //模拟输入“001”
 adb shell input text “001”
@@ -112,9 +93,6 @@ adb shell screenrecord  --time-limit 10 /sdcard/test.mp4
 adb shell screencap /sdcard/test.png
 
 
-
----------虚拟机脚本--------------
-java -jar C:\Users\unbing\Downloads\zentao.jar
 
 
 
